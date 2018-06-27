@@ -18,6 +18,7 @@ import { NgDropdownPanelComponent } from './ng-dropdown-panel.component';
 import { WindowService } from './window.service';
 import { VirtualScrollService } from './virtual-scroll.service';
 import { ConsoleService } from './console.service';
+import { SortablejsModule } from 'angular-sortablejs';
 
 @NgModule({
     declarations: [
@@ -36,7 +37,8 @@ import { ConsoleService } from './console.service';
         NgLoadingTextTemplateDirective
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        SortablejsModule.forRoot({ animation: 150 })
     ],
     exports: [
         NgSelectComponent,

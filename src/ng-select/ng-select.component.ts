@@ -151,6 +151,13 @@ export class NgSelectComponent implements OnDestroy, OnChanges, AfterViewInit, C
     dropdownId = newId();
     selectedItemId = 0;
 
+    sortableOptions = {
+        animation: 150,
+        onUpdate: () => {
+            this._updateNgModel.apply(this);
+        }
+    };
+
     private _defaultLabel = 'label';
     private _primitive: boolean;
     private _focused: boolean;
@@ -244,6 +251,10 @@ export class NgSelectComponent implements OnDestroy, OnChanges, AfterViewInit, C
         } else if ($event.key && $event.key.length === 1) {
             this._keyPress$.next($event.key.toLocaleLowerCase());
         }
+    }
+
+    handleMousedown2($event: MouseEvent) {
+        $event.stopPropagation();
     }
 
     handleMousedown($event: MouseEvent) {
